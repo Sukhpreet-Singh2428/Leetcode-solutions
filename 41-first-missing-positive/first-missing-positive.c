@@ -55,7 +55,7 @@ void mergeSort(int* arr, int left, int right) {
 int firstMissingPositive(int* nums, int numsSize) {
     mergeSort(nums, 0, numsSize - 1);
     int firstmissing = 1;            // My logic --> pehle sort kar lenge fir first missing check 
-    for(int i=0;i<numsSize;i++){     // karenge. insertion sort O(n^2) hai isliye quick sort 
+    for(int i=0;i<numsSize;i++){     // karenge. insertion sort O(n^2) hai isliye merge sort 
         if(nums[i]<firstmissing) continue;
         if(nums[i]==firstmissing) firstmissing++;
     }
