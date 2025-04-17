@@ -1,7 +1,7 @@
 int lengthOfLastWord(char* s) {
     int len = strlen(s);
     int i = len-1;
-    while(i>=0 && s[i]==' '){   // remove space from last !!
+    while(i>=0 && s[i]==' '){   // Ignoring space from last !!
         i--;
     }
     int wordlen = 0;
