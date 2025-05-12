@@ -1,44 +1,32 @@
-#include <stdlib.h>
-void merge(int* arr, int left, int mid, int right) {
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    // Create temp arrays
-    int* L = (int*)malloc(n1 * sizeof(int));
-    int* R = (int*)malloc(n2 * sizeof(int));
-    // Copy data
-    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
-    for (int j = 0; j < n2; j++) R[j] = arr[mid + 1 + j];
-    int i = 0, j = 0, k = left;
-    // Merge the temp arrays back into arr
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j])
-            arr[k++] = L[i++];
+void merge(int* arr, int* temp, int left, int mid, int right) {
+    int i = left, j = mid + 1, k = left;
+    while (i <= mid && j <= right) {
+        if (arr[i] <= arr[j])
+            temp[k++] = arr[i++];
         else
-            arr[k++] = R[j++];
+            temp[k++] = arr[j++];
     }
-    // Copy any remaining elements
-    while (i < n1) arr[k++] = L[i++];
-    while (j < n2) arr[k++] = R[j++];
-    free(L);
-    free(R);
+    while (i <= mid) temp[k++] = arr[i++];
+    while (j <= right) temp[k++] = arr[j++];
+
+    for (int x = left; x <= right; x++) arr[x] = temp[x];
 }
-void mergeSort(int* arr, int left, int right) {
-    if (left < right) {
-        int mid = left + (right - left) / 2;
-        mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
-        merge(arr, left, mid, right);
-    }
+void mergeSort(int* arr, int* temp, int left, int right) {
+    if (left >= right) return;
+    int mid = left + (right - left) / 2;
+    mergeSort(arr, temp, left, mid);
+    mergeSort(arr, temp, mid + 1, right);
+    merge(arr, temp, left, mid, right);
 }
 /**
  * Note: The returned array must be malloced, assume caller calls free().
  */
 int* sortArray(int* nums, int numsSize, int* returnSize) {
     int* result = (int*)malloc(numsSize * sizeof(int));
-    for (int i = 0; i < numsSize; i++) {
-        result[i] = nums[i];  // Copy input to avoid modifying original
-    }
-    mergeSort(result, 0, numsSize - 1);
+    memcpy(result, nums, numsSize * sizeof(int));
+    int* temp = (int*)malloc(numsSize * sizeof(int));
+    mergeSort(result, temp, 0, numsSize - 1);
+    free(temp);
     *returnSize = numsSize;
     return result;
 }
