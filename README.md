@@ -2,7 +2,7 @@
 
 [![LeetCode Badge](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=white)](https://leetcode.com/u/Sukhpreet-Singh2428/)
 
-![LeetCode Stats](https://leetcode-stats.vercel.app/api?username=Sukhpreet-Singh2428&theme=dark)
+![Sukhpreet's LeetCode Card](https://leetcard.jacoblin.cool/Sukhpreet-Singh2428?theme=dark&ext=contest)
 
 ![LeetCode Streak](https://leetcard.jacoblin.cool/Sukhpreet-Singh2428?theme=dark)
 
