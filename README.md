@@ -4,8 +4,6 @@
 
 ![Sukhpreet's LeetCode Card](https://leetcard.jacoblin.cool/Sukhpreet-Singh2428?theme=dark&ext=contest)
 
-![LeetCode Streak](https://leetcard.jacoblin.cool/Sukhpreet-Singh2428?theme=dark)
-
 ---
 
 ## About
