@@ -1,21 +1,4 @@
-# 👋 Hi, I'm Sukhpreet Singh
-
-🎉 Proudly celebrating **50 Days of Consistency on LeetCode (2025)**  
-🔥 Currently on a **41-day solving streak** and counting!
-
-💻 Most of my problem-solving is done using **C language**, focusing on sharpening my logic and consistency.  
-📚 Although I'm still early in my journey with Data Structures & Algorithms, I’m committed to daily practice and continuous improvement — one problem at a time.
-
----
-
-### LeetCode Stats Snapshot  
-- Total Problems Solved: 102  
-- Easy: 75 | Medium: 26 | Hard: 1  
-- Max Streak: 41 days  
-
----
-
-### LeetCode Profile & Streak
+# LeetCode Solutions by Sukhpreet Singh
 
 [![LeetCode Badge](https://img.shields.io/badge/LeetCode-FFA116?style=flat&logo=leetcode&logoColor=white)](https://leetcode.com/u/Sukhpreet-Singh2428/)
 
@@ -23,4 +6,34 @@
 
 ---
 
-*Let's keep learning and growing together!*
+## About
+
+This repository contains my solutions to LeetCode problems, mostly written in **C language**.  
+I am building problem-solving skills by consistent practice and aiming to improve every day.  
+Currently, I am in the early stages of my DSA journey, focusing on logic building and consistent learning.
+
+---
+
+## Repository Structure
+
+- `/easy` — Solutions to Easy level problems  
+- `/medium` — Solutions to Medium level problems  
+- `/hard` — Solutions to Hard level problems (coming soon)
+
+---
+
+## How to Use
+
+- Each solution file is named after the problem title or problem number for easy navigation.  
+- Feel free to explore, learn, and contribute by opening issues or pull requests.
+
+---
+
+## Connect with me
+
+- LeetCode Profile: [Sukhpreet Singh](https://leetcode.com/u/Sukhpreet-Singh2428/)  
+- LinkedIn Profile: [Sukhpreet Singh](www.linkedin.com/in/sukhpreet-singh-301573321)   
+
+---
+
+*Keep coding and keep growing!* 🚀
