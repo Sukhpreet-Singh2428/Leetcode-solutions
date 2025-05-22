@@ -4,6 +4,8 @@
 
 ![LeetCode Stats](https://leetcode-stats.vercel.app/api?username=Sukhpreet-Singh2428&theme=dark)
 
+![LeetCode Streak](https://leetcard.jacoblin.cool/Sukhpreet-Singh2428?theme=dark)
+
 ---
 
 ## About
