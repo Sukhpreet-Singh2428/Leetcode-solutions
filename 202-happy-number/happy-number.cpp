@@ -9,15 +9,15 @@ public:
     }
     return sum;
     }
-    int happyNum(int n, unordered_map<int,int>& mpp) {
-    mpp[n]++;
+    int happyNum(int n, unordered_set<int>& st) {
     if(n==1) return 1;
-    if(n!=1 && mpp[n]>1) return 0;
-    return happyNum(f(n), mpp);
+    if(st.count(n)) return 0;
+    st.insert(n);
+    return happyNum(f(n), st);
     }
     bool isHappy(int n) {
-        unordered_map<int,int> mpp;
-        int x = happyNum(n,mpp);
+        unordered_set<int> st;
+        int x = happyNum(n,st);
         return x==1;
     }
 };
