@@ -8,11 +8,21 @@ public:
         }
         return sum;
     }
+    int findMax(vector<int>& nums){
+        int n = nums.size();
+        int maxi = INT_MIN;
+        for(int i=0; i<n; i++){
+            if(nums[i] > maxi){
+                maxi = nums[i];
+            }
+        }
+        return maxi;
+    }
     int smallestDivisor(vector<int>& nums, int threshold) {
         int n = nums.size();
 
         int low = 1;
-        int high = *max_element(nums.begin(), nums.end());
+        int high = findMax(nums);
         int ans = high;
         while(low<=high){
             int mid = low + (high-low)/2;
