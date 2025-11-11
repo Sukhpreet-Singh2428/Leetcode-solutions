@@ -48,9 +48,6 @@ class Solution {
         }
         
         ListNode result = reverseLL(dummyNode.next);
-        while(result != null && result.val == 0 && result.next != null){
-            result = result.next;
-        }
         return result;
     }
 }
