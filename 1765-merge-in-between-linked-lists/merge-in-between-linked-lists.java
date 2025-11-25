@@ -11,19 +11,20 @@
 class Solution {
     public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
         ListNode temp1 = list1;
-        ListNode dummyNode = new ListNode(-1);
-        ListNode current = dummyNode;
+        // ListNode dummyNode = new ListNode(-1);
+        // ListNode current = dummyNode;
         int cnt = -1;
         while(temp1 != null){
             cnt++;
-            current.next = temp1;
+            // current.next = temp1;
             if(cnt == a-1) break;
-            current = temp1;
+            // current = temp1;
             temp1 = temp1.next;
         }
-        current = temp1;
+        // current = temp1;
+        ListNode last = temp1;
         temp1 = temp1.next;
-        ListNode last = current;
+        // ListNode last = current;
 
         ListNode temp2 = list2;
         while(temp2.next != null){
@@ -45,6 +46,7 @@ class Solution {
 
         last.next = list2;
 
-        return dummyNode.next;
+        // return dummyNode.next;
+        return list1;
     }
 }
