@@ -14,19 +14,15 @@ class Solution {
             return head;
         }
 
-        HashMap<Integer, Integer> mpp = new HashMap<>();
-        ListNode temp = head;
-        while(temp != null){
-            mpp.put(temp.val, mpp.getOrDefault(temp.val, 0)+1);
-            temp = temp.next;
-        }
-
         ListNode dummyNode = new ListNode(-1);
         ListNode current = dummyNode;
-        temp = head;
-        while(temp != null){
-            if(mpp.get(temp.val) > 1){
-                temp = temp.next;
+        ListNode temp = head;
+        while(temp != null && temp.next != null){
+            if(temp.val == temp.next.val){
+                int data = temp.val;
+                while(temp != null && temp.val == data){
+                    temp = temp.next;
+                }
             }
             else{
                 current.next = temp;
@@ -34,7 +30,9 @@ class Solution {
                 temp = temp.next;
             }
         }
-        current.next = null;
+        current.next = temp;
+        current = temp;
+        if(current != null) current.next = null;
 
         return dummyNode.next;
     }
