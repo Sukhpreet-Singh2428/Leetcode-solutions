@@ -21,9 +21,12 @@ class Solution {
 
         while(temp != null){
             if(temp.val == 0){
-                ListNode newNode = new ListNode(sum);
-                current.next = newNode;
-                current = newNode;
+                // ListNode newNode = new ListNode(sum);
+                // current.next = newNode;
+                // current = newNode;
+                temp.val = sum;
+                current.next = temp;
+                current = temp;
                 temp = temp.next;
                 sum = 0;
             }
