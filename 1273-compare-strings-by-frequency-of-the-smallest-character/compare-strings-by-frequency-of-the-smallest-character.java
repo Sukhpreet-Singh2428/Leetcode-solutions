@@ -1,42 +1,50 @@
 class Solution {
+    public static int f(String s){
+        char min = 'z';
+        int cnt = 0;
+        for(char c : s.toCharArray()){
+            if(c < min){
+                min = c;
+                cnt = 1;
+            } else if(c == min){
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
     public int[] numSmallerByFrequency(String[] queries, String[] words) {
-        ArrayList<Integer> ans = new ArrayList<>();
-
-        for(String s : queries){
-            int cnt = 0;
-            HashMap<Character, Integer> mp = new HashMap<>();
-            char mini = s.charAt(0);
-            for(int i=0; i<s.length(); i++){
-                char c = s.charAt(i);
-                if(c < mini){
-                    mini = c;
-                }
-                mp.put(c, mp.getOrDefault(c, 0)+1);
-            }
-            int freq = mp.get(mini);
-            for(String x : words){
-                HashMap<Character, Integer> mp1 = new HashMap<>();
-                char mini1 = x.charAt(0);
-                for(int i=0; i<x.length(); i++){
-                    char c1 = x.charAt(i);
-                    if(c1 < mini1){
-                        mini1 = c1;
-                    }
-                    mp1.put(c1, mp1.getOrDefault(c1, 0)+1);
-                }
-                int freq1 = mp1.get(mini1);
-                if(freq1 > freq){
-                    cnt++;
-                } 
-            }
-            ans.add(cnt);
+        int[] wf = new int[words.length];
+        for(int i = 0; i < words.length; i++){
+            wf[i] = f(words[i]);
         }
 
-        int[] arr = new int[ans.size()];
-        for(int i=0; i<ans.size(); i++){
-            arr[i] = ans.get(i);
+        Arrays.sort(wf);
+
+        int[] ans = new int[queries.length];
+        for(int i = 0; i < queries.length; i++){
+            int qf = f(queries[i]);
+            int idx = upperBound(wf, qf);
+            ans[i] = wf.length - idx;
         }
 
-        return arr;
+        return ans;
+    }
+
+    public static int upperBound(int[] arr, int target){
+        int low = 0;
+        int high = arr.length-1;
+        int ans = arr.length;
+        while(low<=high){
+            int mid = low + (high-low)/2;
+            if(arr[mid] > target){
+                ans = mid;
+                high = mid-1;
+            }
+            else{
+                low = mid+1;
+            }
+        }
+        return ans;
     }
 }
