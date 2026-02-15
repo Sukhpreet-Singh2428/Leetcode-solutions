@@ -1,19 +1,25 @@
 class Solution {
     public int[] singleNumber(int[] nums) {
-        HashMap<Integer, Integer> mp = new HashMap<>();
-        for(int x : nums){
-            mp.put(x, mp.getOrDefault(x, 0)+1);
+        int n = nums.length;
+
+        long XOR_all = 0;
+        for(int i=0; i<n; i++){
+            XOR_all = XOR_all ^ nums[i];
         }
 
-        int[] ans = new int[2];
-        int i=0;
-        for(int key : mp.keySet()){
-            if(mp.get(key)==1){
-                ans[i] = key;
-                i++;
+        int rightmost = (int)(XOR_all & (XOR_all-1)) ^ (int)(XOR_all);
+        int b1 = 0;
+        int b2 = 0;
+        for(int i=0; i<n; i++){
+            if((rightmost & nums[i]) != 0){
+                b1 = b1 ^ nums[i];
+            }
+            else{
+                b2 = b2 ^ nums[i];
             }
         }
 
-        return ans;
+        if(b1<b2) return new int[]{b1,b2};
+        return new int[]{b2, b1};
     }
 }
