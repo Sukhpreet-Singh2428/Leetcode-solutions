@@ -14,26 +14,26 @@
  * }
  */
 class Solution {
-    public int func(TreeNode root, int val, TreeNode[] ans){
-        if(root==null){
-            return 0;
-        }
-
-        if(root.val == val){
-            ans[0] = root;
-            return 1;
-        }
-
-        int l = func(root.left, val, ans);
-        if(l==1) return 1;
-        int r = func(root.right, val, ans);
-        if(r==1) return 1;
-
-        return 0;
-    }
     public TreeNode searchBST(TreeNode root, int val) {
-        TreeNode[] ans = new TreeNode[1];
-        func(root, val, ans);
-        return ans[0];
+        if(root.val == val){
+            return root;
+        }
+
+        TreeNode ans = null;
+        while(root != null){
+            if(root.val == val){
+                ans = root;
+                return ans;
+            }
+
+            if(root.val < val){
+                root = root.right;
+            }
+            else{
+                root = root.left;
+            }
+        }
+
+        return ans;
     }
 }
