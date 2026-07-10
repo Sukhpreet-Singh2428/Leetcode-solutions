@@ -1,21 +1,28 @@
 class Solution {
     public double findMaxAverage(int[] nums, int k) {
-        double ans = Integer.MIN_VALUE;
-        ArrayDeque<Integer> dq = new ArrayDeque<>();
+        int n = nums.length;
 
+        int l = 0;
+        int r = 0;
         double sum = 0;
-        for(int i=0; i<nums.length; i++){
-            if(!dq.isEmpty() && dq.peekFirst()<=i-k){
-                sum -= nums[dq.pollFirst()];
+        double avg = Integer.MIN_VALUE;
+
+        while(r < n){
+            sum += nums[r];
+
+            if(r-l+1 > k){
+                sum -= nums[l];
+                l++;
             }
-            sum += nums[i];
-            dq.offerLast(i);
-            if(i>=k-1){
-                double avg = sum/k;
-                ans = Math.max(ans, avg);
+
+            if(r-l+1 == k){
+                double average = sum/(double)k;
+                avg = Math.max(avg, average);
             }
+            
+            r++;
         }
 
-        return ans;
+        return avg;
     }
 }
