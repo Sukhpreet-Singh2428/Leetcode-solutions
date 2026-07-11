@@ -1,19 +1,31 @@
 class Solution {
-    public int numSubarraysWithSum(int[] nums, int goal) {
-        int cnt = 0;
-        HashMap<Integer, Integer> mp = new HashMap<>();
-        mp.put(0,1);
-        int sum = 0;
-        for(int i=0; i<nums.length; i++){
-            sum += nums[i];
+    public int countSubarrayWithSumLessThanEqualToK(int[] nums, int k){
+        if(k<0) return 0;
+        int n = nums.length;
 
-            int rem = sum-goal;
-            if(mp.containsKey(rem)){
-                cnt += mp.get(rem);
+        int l = 0;
+        int r = 0;
+        int cnt = 0;
+        int sum = 0;
+
+        while(r < n){
+            sum += nums[r];
+
+            while(sum > k){
+                sum -= nums[l];
+                l++;
             }
-            mp.put(sum, mp.getOrDefault(sum, 0)+1);
+
+            if(sum<=k){
+                cnt = cnt + r-l+1;
+            }
+
+            r++;
         }
 
         return cnt;
+    }
+    public int numSubarraysWithSum(int[] nums, int goal) {
+        return countSubarrayWithSumLessThanEqualToK(nums, goal) - countSubarrayWithSumLessThanEqualToK(nums, goal-1);
     }
 }
