@@ -5,31 +5,37 @@ class Solution {
         int l = 0;
         int r = 0;
         int maxNum = 0;
-        HashMap<Character, Integer> mp = new HashMap<>();
+        // HashMap<Character, Integer> mp = new HashMap<>();
+        int cnt = 0;
 
         while(r < n){
             char c = s.charAt(r);
             if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
-                mp.put(c, mp.getOrDefault(c, 0)+1);
+                // mp.put(c, mp.getOrDefault(c, 0)+1);
+                cnt++;
             }
 
             if(r-l+1 > k){
                 char left = s.charAt(l);
-                if(mp.containsKey(left)){
-                    mp.put(left, mp.get(left)-1);
-                    if(mp.get(left)==0){
-                        mp.remove(left);
-                    }
+                // if(mp.containsKey(left)){
+                //     mp.put(left, mp.get(left)-1);
+                //     if(mp.get(left)==0){
+                //         mp.remove(left);
+                //     }
+                // }
+                if(left=='a' || left=='e' || left=='i' || left=='o' || left=='u'){
+                    cnt--;
                 }
                 l++;
             }
 
             if(r-l+1 == k){
-                int total = 0;
-                for(char key : mp.keySet()){
-                    total += mp.get(key);
-                }
-                maxNum = Math.max(maxNum, total);
+                // int total = 0;
+                // for(char key : mp.keySet()){
+                //     total += mp.get(key);
+                // }
+                // maxNum = Math.max(maxNum, total);
+                maxNum = Math.max(maxNum, cnt);
             }
 
             r++;
