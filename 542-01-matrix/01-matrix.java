@@ -1,52 +1,54 @@
-class Solution {
-    public static void func(int i, int j, int r, int c, int[][] mat, int dis, int[] mini, boolean[][] visited){
-        if(i<0 || i>=r || j<0 || j>=c){
-            return;
-        }
-        if(visited[i][j] == true){
-            return;
-        }
-        if(mat[i][j] == 0){
-            mini[0] = Math.min(mini[0], dis);
-            return;
-        }
-        if(dis >= mini[0]){
-            return;
-        }
+class Pair{
+    int row;
+    int col;
+    int dist;
 
-        visited[i][j] = true;
-        // up
-        func(i-1, j, r, c, mat, dis+1, mini, visited);
-
-        // down
-        func(i+1, j, r, c, mat, dis+1, mini, visited);
-
-        // left
-        func(i, j-1, r, c, mat, dis+1, mini, visited);
-
-        // right 
-        func(i, j+1, r, c, mat, dis+1, mini, visited);
-
-        visited[i][j] = false;
-        
+    public Pair(int row, int col, int dist){
+        this.row = row;
+        this.col = col;
+        this.dist = dist;
     }
+}
+class Solution {
     public int[][] updateMatrix(int[][] mat) {
-        int r = mat.length;
-        int c = mat[0].length;
-        int[][] ans = new int[r][c];
-        boolean[][] visited = new boolean[r][c];
+        int n = mat.length;
+        int m = mat[0].length;
 
-        for(int i=0; i<r; i++){
-            for(int j=0; j<c; j++){
-                if(mat[i][j] == 1){
-                    int[] mini = new int[1];
-                    mini[0] = Integer.MAX_VALUE;
-                    func(i, j, r, c, mat, 0, mini, visited);
-                    ans[i][j] = mini[0];
+        boolean[][] vis = new boolean[n][m];
+        Queue<Pair> qu = new ArrayDeque<>();
+
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(mat[i][j]==0){
+                    qu.offer(new Pair(i, j, 0));
+                    vis[i][j] = true;
+                }
+                else{
+                    vis[i][j] = false;
                 }
             }
         }
 
-        return ans;
+        int[] drow = {-1, 0, 1, 0};
+        int[] dcol = {0, 1, 0, -1};
+        while(!qu.isEmpty()){
+            int r = qu.peek().row;
+            int c = qu.peek().col;
+            int steps = qu.peek().dist;
+            mat[r][c] = steps;
+            qu.poll();
+
+            for(int i=0; i<4; i++){
+                int nrow = r + drow[i];
+                int ncol = c + dcol[i];
+
+                if(nrow>=0 && nrow<n && ncol>=0 && ncol<m && vis[nrow][ncol]==false){
+                    vis[nrow][ncol] = true;
+                    qu.offer(new Pair(nrow, ncol, steps+1));
+                }
+            }
+        }
+
+        return mat;
     }
 }
