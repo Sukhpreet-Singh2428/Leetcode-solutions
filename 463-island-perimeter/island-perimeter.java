@@ -31,11 +31,11 @@ class Solution {
             for(int j=0; j<m; j++){
                 if(grid[i][j]==1 && vis[i][j]==false){
                     dfs(i, j, grid, vis, drow, dcol, n, m);
-                    break;
+                    return peri;
                 }
             }
         }
 
-        return peri;
+        return 0;
     }
 }
