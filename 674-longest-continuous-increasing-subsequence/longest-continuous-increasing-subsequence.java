@@ -5,17 +5,14 @@ class Solution {
         int l = 0;
         int r = 0;
         int maxLen = 0;
-        List<Integer> ls = new ArrayList<>();
+        int last = -1;
 
         while(r<n){
-            if(ls.size()>0 && nums[r]<=ls.get(ls.size()-1)){
-                while(ls.size()>0 && nums[r]<=ls.get(ls.size()-1)){
-                    ls.remove(0);
-                    l++;
-                }
+            if(last!=-1 && nums[r]<=last){
+                l = r;
             }
 
-            ls.add(nums[r]);
+            last = nums[r];
 
             maxLen = Math.max(maxLen, r-l+1);
 
