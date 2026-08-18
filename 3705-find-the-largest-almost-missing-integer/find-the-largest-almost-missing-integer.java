@@ -8,7 +8,7 @@ class Solution {
             }
             return ans;
         }
-        
+
         HashMap<Integer, Integer> mp = new HashMap<>();
 
         int l = 0;
