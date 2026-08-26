@@ -4,7 +4,7 @@ class Solution {
 
         for(int it : graph.get(node)){
             ans[it] = true;
-            if(vis[node] == false) dfs(it, graph, vis, ans);
+            if(vis[it] == false) dfs(it, graph, vis, ans);
         }
     }
     public List<Integer> findSmallestSetOfVertices(int n, List<List<Integer>> edges) {
