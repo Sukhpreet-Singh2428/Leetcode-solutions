@@ -9,7 +9,7 @@ class Solution {
         }
 
         int idx = 0;
-        while(n != 0){
+        while(mp.size() > 0){
             int start = idx;
             for(int key : mp.keySet()){
                 ans[idx] = key;
@@ -20,7 +20,6 @@ class Solution {
                 mp.put(key, mp.getOrDefault(key, 0)-1);
                 if(mp.get(key) <= 0) mp.remove(key);
             }
-            n = mp.size();
         }
 
         return ans;
